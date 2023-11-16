@@ -12,6 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", default=False)
+print(DEBUG)
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="").split(",")
 
@@ -270,7 +271,5 @@ USE_TZ = True
 STATIC_URL = os.getenv("STATIC_URL", default="/static/")
 
 MEDIA_URL = os.getenv("MEDIA_URL", default="/media/")
-
-STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
