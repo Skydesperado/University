@@ -13,4 +13,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY ./ /app/
 
+RUN mkdir staticfiles
+
 CMD python3 manage.py collectstatic --no-input
