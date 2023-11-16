@@ -15,18 +15,6 @@ DEBUG = os.getenv("DEBUG", default=False)
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="").split(",")
 
-LOCAL_APPS = [
-    "user",
-]
-
-THIRD_PARTY_APPS = [
-    "rest_framework",
-    "django_filters",
-    "drf_spectacular",
-    "minio_storage",
-    "rosetta",
-]
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -34,8 +22,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    *LOCAL_APPS,
-    *THIRD_PARTY_APPS,
+    # Local
+    "user",
+    # Third Party
+    "rest_framework",
+    "django_filters",
+    "drf_spectacular",
+    "minio_storage",
+    "rosetta",
 ]
 
 MIDDLEWARE = [
@@ -92,13 +86,13 @@ MINIO_EXTERNAL_STORAGE_ENDPOINT = os.getenv("MINIO_EXTERNAL_STORAGE_ENDPOINT", d
 MINIO_STORAGE_ACCESS_KEY = os.getenv("MINIO_STORAGE_ACCESS_KEY", default="minioadmin")
 MINIO_STORAGE_SECRET_KEY = os.getenv("MINIO_STORAGE_SECRET_KEY", default="minioadmin")
 MINIO_STORAGE_USE_HTTPS = os.getenv("MINIO_STORAGE_USE_HTTPS", default="False")
-MINIO_STORAGE_MEDIA_BUCKET_NAME = os.getenv("MINIO_STORAGE_MEDIA_BUCKET_NAME", default="Media")
+MINIO_STORAGE_MEDIA_BUCKET_NAME = os.getenv("MINIO_STORAGE_MEDIA_BUCKET_NAME", default="media")
 MINIO_STORAGE_MEDIA_USE_PRESIGNED = True
 MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
 MINIO_STORAGE_MEDIA_URL = os.getenv(
     "MINIO_STORAGE_MEDIA_URL", f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_MEDIA_BUCKET_NAME}"
 )
-MINIO_STORAGE_STATIC_BUCKET_NAME = os.getenv("MINIO_STORAGE_STATIC_BUCKET_NAME", default="Static")
+MINIO_STORAGE_STATIC_BUCKET_NAME = os.getenv("MINIO_STORAGE_STATIC_BUCKET_NAME", default="static")
 MINIO_STORAGE_STATIC_USE_PRESIGNED = True
 MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 MINIO_STORAGE_STATIC_URL = os.getenv(
@@ -276,5 +270,7 @@ USE_TZ = True
 STATIC_URL = os.getenv("STATIC_URL", default="/static/")
 
 MEDIA_URL = os.getenv("MEDIA_URL", default="/media/")
+
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
