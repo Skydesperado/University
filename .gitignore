@@ -68,7 +68,6 @@ venv/
 
 # Misc
 .mypy_cache
-/staticfiles
 
 # IDEs
 .DS_Store

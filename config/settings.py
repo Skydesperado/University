@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -271,6 +272,6 @@ STATIC_URL = os.getenv("STATIC_URL", default="/static/")
 
 MEDIA_URL = os.getenv("MEDIA_URL", default="/media/")
 
-STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATICFILES_DIRS = [os.path.join(PROJECT_DIR) / "staticfiles"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
