@@ -69,11 +69,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv("DATABASE_ENGINE", default="django.db.backends.postgresql"),
-        "NAME": os.getenv("DATABASE_NAME", default="postgresql"),
-        "USER": os.getenv("DATABASE_USER", default="postgresql"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD", default="postgresql"),
-        "HOST": os.getenv("DATABASE_HOST", default="localhost"),
+        "ENGINE": os.getenv("DATABASE_ENGINE"),
+        "NAME": os.getenv("DATABASE_NAME"),
+        "USER": os.getenv("DATABASE_USER"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
+        "HOST": os.getenv("DATABASE_HOST"),
         "PORT": os.getenv("DATABASE_PORT", default="5432"),
     }
 }
@@ -82,23 +82,23 @@ DATABASES = {
 
 DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
 STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
-MINIO_STORAGE_ENDPOINT = os.getenv("MINIO_STORAGE_ENDPOINT", default="minio:9000")
+MINIO_STORAGE_ENDPOINT = os.getenv("MINIO_STORAGE_ENDPOINT")
 print(MINIO_STORAGE_ENDPOINT)
-MINIO_EXTERNAL_STORAGE_ENDPOINT = os.getenv("MINIO_EXTERNAL_STORAGE_ENDPOINT", default="http://127.0.0.1:9000")
-MINIO_STORAGE_ACCESS_KEY = os.getenv("MINIO_STORAGE_ACCESS_KEY", default="minioadmin")
-MINIO_STORAGE_SECRET_KEY = os.getenv("MINIO_STORAGE_SECRET_KEY", default="minioadmin")
+MINIO_EXTERNAL_STORAGE_ENDPOINT = os.getenv("MINIO_EXTERNAL_STORAGE_ENDPOINT")
+MINIO_STORAGE_ACCESS_KEY = os.getenv("MINIO_STORAGE_ACCESS_KEY")
+MINIO_STORAGE_SECRET_KEY = os.getenv("MINIO_STORAGE_SECRET_KEY")
 MINIO_STORAGE_USE_HTTPS = os.getenv("MINIO_STORAGE_USE_HTTPS", default="False")
 MINIO_STORAGE_MEDIA_BUCKET_NAME = os.getenv("MINIO_STORAGE_MEDIA_BUCKET_NAME", default="media")
 MINIO_STORAGE_MEDIA_USE_PRESIGNED = True
 MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
 MINIO_STORAGE_MEDIA_URL = os.getenv(
-    "MINIO_STORAGE_MEDIA_URL", f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_MEDIA_BUCKET_NAME}"
+    "MINIO_STORAGE_MEDIA_URL", default=f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_MEDIA_BUCKET_NAME}"
 )
 MINIO_STORAGE_STATIC_BUCKET_NAME = os.getenv("MINIO_STORAGE_STATIC_BUCKET_NAME", default="static")
 MINIO_STORAGE_STATIC_USE_PRESIGNED = True
 MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 MINIO_STORAGE_STATIC_URL = os.getenv(
-    "MINIO_STORAGE_STATIC_URL", f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_STATIC_BUCKET_NAME}"
+    "MINIO_STORAGE_STATIC_URL", default=f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_STATIC_BUCKET_NAME}"
 )
 
 # CACHES
@@ -106,7 +106,7 @@ MINIO_STORAGE_STATIC_URL = os.getenv(
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.getenv("CACHE_LOCATION", default="redis://redis:6379/1"),
+        "LOCATION": os.getenv("CACHE_LOCATION"),
         "TIMEOUT": 600,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
@@ -116,7 +116,7 @@ CACHES = {
 
 # CELERY
 
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", default="redis://redis:6379/2")
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_TIMEZONE = os.getenv("TIME_ZONE", default="Asia/Tehran")
 
 # SMTP
