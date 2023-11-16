@@ -83,6 +83,7 @@ DATABASES = {
 DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
 STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
 MINIO_STORAGE_ENDPOINT = os.getenv("MINIO_STORAGE_ENDPOINT", default="minio:9000")
+print(MINIO_STORAGE_ENDPOINT)
 MINIO_EXTERNAL_STORAGE_ENDPOINT = os.getenv("MINIO_EXTERNAL_STORAGE_ENDPOINT", default="http://127.0.0.1:9000")
 MINIO_STORAGE_ACCESS_KEY = os.getenv("MINIO_STORAGE_ACCESS_KEY", default="minioadmin")
 MINIO_STORAGE_SECRET_KEY = os.getenv("MINIO_STORAGE_SECRET_KEY", default="minioadmin")
