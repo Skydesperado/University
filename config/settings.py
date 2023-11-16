@@ -77,6 +77,14 @@ DATABASES = {
     }
 }
 
+print("DATABASE CONFIGURATION:")
+print(f"Engine: {DATABASES['default']['ENGINE']}")
+print(f"Name: {DATABASES['default']['NAME']}")
+print(f"User: {DATABASES['default']['USER']}")
+print(f"Password: {DATABASES['default']['PASSWORD']}")
+print(f"Host: {DATABASES['default']['HOST']}")
+print(f"Port: {DATABASES['default']['PORT']}")
+
 # MINIO
 
 DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
@@ -98,6 +106,21 @@ MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 MINIO_STORAGE_STATIC_URL = os.getenv(
     "MINIO_STORAGE_STATIC_URL", default=f"{MINIO_EXTERNAL_STORAGE_ENDPOINT}/{MINIO_STORAGE_STATIC_BUCKET_NAME}"
 )
+
+print("MINIO CONFIGURATION:")
+print(f"Endpoint: {MINIO_STORAGE_ENDPOINT}")
+print(f"External Storage Endpoint: {MINIO_EXTERNAL_STORAGE_ENDPOINT}")
+print(f"Access Key: {MINIO_STORAGE_ACCESS_KEY}")
+print(f"Secret Key: {MINIO_STORAGE_SECRET_KEY}")
+print(f"Use HTTPS: {MINIO_STORAGE_USE_HTTPS}")
+print(f"Media Bucket Name: {MINIO_STORAGE_MEDIA_BUCKET_NAME}")
+print(f"Media Use Presigned: {MINIO_STORAGE_MEDIA_USE_PRESIGNED}")
+print(f"Auto Create Media Bucket: {MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET}")
+print(f"Media URL: {MINIO_STORAGE_MEDIA_URL}")
+print(f"Static Bucket Name: {MINIO_STORAGE_STATIC_BUCKET_NAME}")
+print(f"Static Use Presigned: {MINIO_STORAGE_STATIC_USE_PRESIGNED}")
+print(f"Auto Create Static Bucket: {MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET}")
+print(f"Static URL: {MINIO_STORAGE_STATIC_URL}")
 
 # CACHES
 
