@@ -11,8 +11,6 @@ COPY requirements.txt /app/
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# RUN mkdir -p /app/staticfiles
-
 COPY ./ /app/
 
-RUN python manage.py collectstatic --noinput
+CMD python3 manage.py collectstatic --no-input
