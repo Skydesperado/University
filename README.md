@@ -1,4 +1,4 @@
 Project Setup
 =============
 
-Project Setup Instructions Here
+Project Setup Instructions Here.
