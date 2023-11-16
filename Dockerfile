@@ -13,4 +13,4 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./ ./
 
-RUN python manage.py collectstatic --no-input
+RUN python manage.py collectstatic
